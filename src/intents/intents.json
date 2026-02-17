@@ -2,6 +2,7 @@
     "intents": [
         {
             "name": "control_lights",
+            "category": "room_iot",
             "description": "Illumination  control in the room",
             "examples": [
                 "Enciende la luz",
@@ -21,13 +22,13 @@
                     "max": 100
                 }
             },
-            "action": "adjust_lights",
-            "response": null    
+            "action": "adjust_lights"
         },
 
         {
             "name": "control_curtains", 
             "description": "Opens or closes curtains",
+            "category": "room_iot",
             "examples": [
                 "Abre las cortinas",
                 "Cierra las cortinas"
@@ -35,15 +36,15 @@
             "parameters":{
                 "state":{
                     "type": "string",
-                    "values": ["ON", "OFF"]
+                    "values": ["CLOSED", "OPENED"]
                 }
             },
-            "action": "adjust_curtains",
-            "reponse": null
+            "action": "adjust_curtains"
         },
 
         {
             "name": "control_AC",
+            "category": "room_iot",
             "description": "Temperature control in the room",
             "examples": [
                 "Subela temperatura",
@@ -51,7 +52,7 @@
                 "Prende el aire", 
                 "Apaga el aire"
             ],
-            "paramaters": {
+            "parameters": {
                 "state": {
                     "type": "string", 
                     "values": ["ON", "OFF"]
@@ -62,12 +63,12 @@
                     "max": 24
                 }
             },
-            "action": "adjust_temp",
-            "response": null
+            "action": "adjust_temp"
         },
 
         {
             "name": "control_tv", 
+            "category": "room_iot",
             "description": "Turns the TV on/ off",
             "examples": [
                 "Ṕrende la tele", 
@@ -80,15 +81,15 @@
             "parameters": {
                 "state":{
                     "type": "string",
-                    "values": ["ON/OFF"]
+                    "values": ["ON", "OFF"]
                 }
             },
-            "action": "on_off_tv",
-            "response":null
+            "action": "on_off_tv"
         },
 
         {
             "name": "change_channel", 
+            "category": "room_iot",
             "description": "Change TV channel", 
             "examples": [
                 "Cambia al canal {channel}", 
@@ -96,10 +97,10 @@
                 "Pon el canal {channel}", 
                 "Quiero ver {channel}"
             ],
-            "paramaters":{
+            "parameters":{
                 "channel":{
                     "type": "integer", 
-                    "requited": true, 
+                    "required": true, 
                     "elicitation_prompt": "¿A qué canal quieres cambiar? "
                 }
             },
@@ -107,7 +108,8 @@
         },
 
         {
-            "name": "adjust_volumen", 
+            "name": "adjust_volume", 
+            "category": "room_iot",
             "description": "Ajust TV volume", 
             "examples": [
                 "Baja el volumen",
@@ -115,15 +117,14 @@
                 "Mute TV", 
                 "Silencia la TV"
             ],
-            "paramaters":{
+            "parameters":{
                 "volume":{
                     "type": "string", 
-                    "values": ["UP", "DOWN"],
-                    "requited": true, 
-                    "elicitation_prompt": "¿A qué canal quieres cambiar? "
+                    "values": ["UP", "DOWN", "MUTE"],
+                    "required": true
                 }
             },
-            "action": "channel_changed"
+            "action": "volume_changed"
         }
     ]
 
