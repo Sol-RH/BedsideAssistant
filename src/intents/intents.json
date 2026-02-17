@@ -1,0 +1,133 @@
+{
+    "intents": [
+        {
+            "name": "control_lights",
+            "description": "Illumination  control in the room",
+            "examples": [
+                "Enciende la luz",
+                "Prende la luz", 
+                "Apaga la luz", 
+                "Sube la luz", 
+                "Baja la luz"
+            ],
+            "parameters": {
+                "state": {
+                    "type": "string",
+                    "values": ["ON", "OFF"]
+                },
+                "brightness":{
+                    "type": "integer", 
+                    "min": 0, 
+                    "max": 100
+                }
+            },
+            "action": "adjust_lights",
+            "response": null    
+        },
+
+        {
+            "name": "control_curtains", 
+            "description": "Opens or closes curtains",
+            "examples": [
+                "Abre las cortinas",
+                "Cierra las cortinas"
+            ],
+            "parameters":{
+                "state":{
+                    "type": "string",
+                    "values": ["ON", "OFF"]
+                }
+            },
+            "action": "adjust_curtains",
+            "reponse": null
+        },
+
+        {
+            "name": "control_AC",
+            "description": "Temperature control in the room",
+            "examples": [
+                "Subela temperatura",
+                "Baja la temperatura", 
+                "Prende el aire", 
+                "Apaga el aire"
+            ],
+            "paramaters": {
+                "state": {
+                    "type": "string", 
+                    "values": ["ON", "OFF"]
+                }, 
+                "temperature": {
+                    "type": "integer",
+                    "min": 21, 
+                    "max": 24
+                }
+            },
+            "action": "adjust_temp",
+            "response": null
+        },
+
+        {
+            "name": "control_tv", 
+            "description": "Turns the TV on/ off",
+            "examples": [
+                "Ṕrende la tele", 
+                "Apaga la tele", 
+                "Ṕrende la TV", 
+                "Apaga la TV", 
+                "Ṕrende la television", 
+                "Apaga la television"
+            ],
+            "parameters": {
+                "state":{
+                    "type": "string",
+                    "values": ["ON/OFF"]
+                }
+            },
+            "action": "on_off_tv",
+            "response":null
+        },
+
+        {
+            "name": "change_channel", 
+            "description": "Change TV channel", 
+            "examples": [
+                "Cambia al canal {channel}", 
+                "Cambia a canal {channel}", 
+                "Pon el canal {channel}", 
+                "Quiero ver {channel}"
+            ],
+            "paramaters":{
+                "channel":{
+                    "type": "integer", 
+                    "requited": true, 
+                    "elicitation_prompt": "¿A qué canal quieres cambiar? "
+                }
+            },
+            "action": "channel_changed"
+        },
+
+        {
+            "name": "adjust_volumen", 
+            "description": "Ajust TV volume", 
+            "examples": [
+                "Baja el volumen",
+                "Sube el volumen", 
+                "Mute TV", 
+                "Silencia la TV"
+            ],
+            "paramaters":{
+                "volume":{
+                    "type": "string", 
+                    "values": ["UP", "DOWN"],
+                    "requited": true, 
+                    "elicitation_prompt": "¿A qué canal quieres cambiar? "
+                }
+            },
+            "action": "channel_changed"
+        }
+    ]
+
+}
+
+
+
