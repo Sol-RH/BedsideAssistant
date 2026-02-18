@@ -1,3 +1,4 @@
+# src/audio/record_audio.py
 # Captures the voice input 
 
 import sounddevice as sd
@@ -66,7 +67,6 @@ class AudioRecorder:
         return audio 
 
 if __name__== "__main__":
-    import logging 
     logging.basicConfig(level= logging.INFO, format= "%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
     recorder= AudioRecorder()
