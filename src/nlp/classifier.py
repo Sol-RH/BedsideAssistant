@@ -1,1 +1,1 @@
-#src/nkp/classifier.py
+#src/nlp/classifier.py
