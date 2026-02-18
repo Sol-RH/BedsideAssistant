@@ -1,3 +1,4 @@
+# src/nlp/intent_scheme.py
 # Read intents from JSON file 
 # rn the intents correspond only to category: room_iot 
 import json 
