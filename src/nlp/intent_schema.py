@@ -23,4 +23,4 @@ def load_intents():
 if __name__== "__main__":
     logging.basicConfig(level=logging.INFO)
     intents= load_intents()
-    logger.info(f"Cargados {len(intents)} intents")
+    logger.info(f" Intents loaded = {len(intents)}")
