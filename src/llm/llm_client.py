@@ -11,7 +11,7 @@ class LLMClient:
     def __init__(self, intents_data: list):
         api_key= os.getenv("GROQ_API_KEY")
         if not api_key:
-            raise ValueError("ROQ_API_KEY not found in environment variables.")
+            raise ValueError("GROQ_API_KEY not found in environment variables.")
         
         self.client= Groq(api_key= api_key)
         self.intents= intents_data 
@@ -27,8 +27,18 @@ class LLMClient:
             Description: {intent['description']}
             Parameters:
             """
-            for param in intent.get("parameters", []):
-                intents_des += f"  - {param['name']} ({param['type']}): {param['description']}"
+            if 'parameters' in intent:
+                for param_name, param_info in intent['parameters'].items():
+                    param_type= param_info.get('type', 'string')
+                    intents_des += f"   - {param_name} ({param_type})"
+                
+                if 'values' in param_info:
+                     intents_des += f"  - Opciones: {', '.join(param_info['values'])}"
+
+                if 'min' in param_info and 'max' in param_info:
+                    intents_des += f" - Rango: {param_info['min']}-{param_info['max']}"
+                intents_des += "/n"
+
         prompt = f""" Eres un clasificador de intenciones para un asistente de voz hospitalario.
 
 Tu trabajo es:
@@ -79,8 +89,7 @@ REGLAS:
             )
 
             #Extract the response 
-            result_text= res.choices[0].message.content.strip()
-            result_text= result_text.replace("```json", "").replace("```", "").strip()
+            result_text= res.choices[0].message.content.strip()         
 
             #Parsing to json 
             result= json.loads(result_text)
