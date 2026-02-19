@@ -15,3 +15,9 @@ silence_thresh= 0.01     # considering the hopsital room is mostly silent
 
 silence_dur= 2.0    #silence after user stops talking
 min_audio= 0.5      #minium audio duration
+
+class AudioRecorder:
+    def __init__(self, silence_thresh= silence_thresh):
+        self.silence_thresh= silence_thresh
+        self.rate= rate
+        self.channels= channels 
